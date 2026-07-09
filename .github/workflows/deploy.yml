@@ -27,6 +27,8 @@ jobs:
 
       - name: Build with Astro
         uses: withastro/action@v3
+        with:
+          node-version: "22.12.0"
         # The action installs deps, runs `astro build`, and uploads the
         # dist/ folder as a Pages artifact automatically.
 
