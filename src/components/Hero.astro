@@ -1,0 +1,45 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="hero" id="top">
+  <div class="container">
+    <p class="hero__eyebrow">{site.title}</p>
+    <h1 class="hero__name">{site.name}</h1>
+    <p class="hero__tagline">{site.tagline}</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(3rem, 9vw, 5rem) var(--space-section);
+  }
+
+  .hero__eyebrow {
+    display: inline-block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--pill-text);
+    background: var(--pill-bg);
+    border: 1px solid var(--pill-border);
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__name {
+    font-size: clamp(2.25rem, 7vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  .hero__tagline {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 34rem;
+  }
+</style>

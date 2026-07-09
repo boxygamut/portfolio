@@ -1,0 +1,174 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Design tokens: a warm, single restrained accent, warm-toned neutrals.
+   Light values are the default; the prefers-color-scheme block overrides the
+   same variables for dark mode. Components reference these tokens.
+   ───────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Accent (single warm hue, no gradients) */
+  --accent: #9a3412; /* rust / burnt terracotta */
+  --accent-hover: #7c2d12;
+  --accent-soft: rgba(154, 52, 18, 0.08);
+  --accent-border: rgba(154, 52, 18, 0.22);
+
+  /* Muted variant for pills/badges, so small chips of color don't shout */
+  --pill-text: var(--accent);
+  --pill-bg: var(--accent-soft);
+  --pill-border: var(--accent-border);
+
+  /* Surfaces + text (warm neutrals) */
+  --bg: #faf7f2;
+  --surface: #fffdfa;
+  --surface-2: #f4efe6;
+  --border: #e8ded0;
+  --text: #241f19;
+  --text-muted: #6b5f52;
+  --text-faint: #948a7b;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+
+  --content-width: 44rem;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --space-section: clamp(3.5rem, 8vw, 5.5rem);
+  --shadow-sm: 0 1px 2px rgba(40, 30, 18, 0.06), 0 1px 4px rgba(40, 30, 18, 0.05);
+  --shadow-md: 0 8px 24px rgba(40, 30, 18, 0.1), 0 2px 6px rgba(40, 30, 18, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #cfa787; /* muted warm tan, same tone used for pills */
+    --accent-hover: #e0c19e;
+    --accent-soft: rgba(207, 167, 135, 0.1);
+    --accent-border: rgba(207, 167, 135, 0.26);
+
+    --bg: #14100c;
+    --surface: #1c1712;
+    --surface-2: #191410;
+    --border: #2e2620;
+    --text: #f2ece2;
+    --text-muted: #b3a595;
+    --text-faint: #7d7263;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.32);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Reset / base
+   ───────────────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 1.05rem;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  font-weight: 700;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Layout helpers
+   ───────────────────────────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.section {
+  padding-block: var(--space-section);
+}
+
+.section__title {
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  margin-bottom: 2rem;
+}
+
+/* Pill tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+}
+
+.tag {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--pill-text);
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

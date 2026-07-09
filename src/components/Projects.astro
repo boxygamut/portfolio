@@ -1,0 +1,40 @@
+---
+import { site } from '../data/site';
+import ProjectCard from './ProjectCard.astro';
+
+const githubLabel = site.contact.github?.replace(/^https?:\/\//, '').replace(/\/$/, '');
+---
+
+<section class="section" id="projects" aria-labelledby="projects-title">
+  <div class="container">
+    <h2 class="section__title" id="projects-title">Projects</h2>
+
+    <div class="projects__grid">
+      {site.projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+
+    {
+      site.contact.github && (
+        <p class="projects__more">
+          More on{' '}
+          <a href={site.contact.github} target="_blank" rel="noopener">
+            {githubLabel}
+          </a>
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .projects__grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .projects__more {
+    margin-top: 1.75rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+</style>

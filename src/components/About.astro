@@ -1,0 +1,51 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <h2 class="section__title" id="about-title">About Me</h2>
+
+    <p class="about__bio">{site.bio}</p>
+
+    {site.location && <p class="about__location">Based in {site.location}</p>}
+
+    {
+      site.skills.length > 0 && (
+        <div class="about__skills">
+          <h3 class="about__skills-title">Skills &amp; tools</h3>
+          <ul class="tags" aria-label="Skills and tools">
+            {site.skills.map((skill) => (
+              <li class="tag">{skill}</li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .about__bio {
+    font-size: 1.12rem;
+    color: var(--text-muted);
+    max-width: 40rem;
+  }
+
+  .about__location {
+    margin-top: 1rem;
+    color: var(--text-faint);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .about__skills {
+    margin-top: 2.25rem;
+  }
+
+  .about__skills-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+</style>
