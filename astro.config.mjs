@@ -13,6 +13,6 @@ import { defineConfig } from 'astro/config';
 //  TODO: confirm these two values match your GitHub username / repo name.
 // ─────────────────────────────────────────────────────────────────────────────
 export default defineConfig({
-  site: 'https://boxygamut.github.io',
+  site: 'https://boxygamut.github.io/portfolio',
   base: '/Personal-Website',
 });
